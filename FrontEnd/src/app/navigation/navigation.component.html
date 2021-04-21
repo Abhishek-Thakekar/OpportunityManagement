@@ -1,0 +1,66 @@
+<div *ngIf="loggedIn" style="padding-bottom: 10%">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand">
+      <img src="{{ img_url }}" alt="Logo" routerLink="/" style="width: 40px" />
+    </a>
+    <ul id="nav" class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="navbar-brand" routerLink="/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" routerLink="/analysis">Analysis</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" routerLink="/search">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="navbar-brand" (click)="signOut()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- 
+<footer  class="navbar navbar-default navbar-static-bottom">
+  <div class="container">
+  <p class="navbar-text navbar-left">&copy; All Rights Reserved!</p>
+  </div>
+</footer> -->
+<!-- 
+<header class="header">
+  <div class="navbar-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">
+              <img src="assets/img/logo/logo.svg" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+              <ul id="nav" class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="page-scroll active" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="page-scroll" href="#process">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="page-scroll" href="#services">Services</a>
+                </li>
+      <li class="nav-item">
+                  <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header> -->

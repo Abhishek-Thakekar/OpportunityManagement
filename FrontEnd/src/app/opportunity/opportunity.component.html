@@ -1,0 +1,41 @@
+<div class="container">
+  <button routerLink="/create" class="create main-btn btn-hover" >Create New Opportunity</button>
+</div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table  table-hover table-dark">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Skills</th>
+          <th>Location</th>
+          <th>Vacancy</th>
+          <th>Description</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let op of tmpStatus" [ngClass] = "{'alert-danger' : !op.status}" (click)="onClick(op.opportunities.opid)">
+          <td>{{ op.opportunities.opid }}</td>
+          <td>{{ op.opportunities.title }}</td>
+          <td>{{ op.opportunities.skills }}</td>
+          <td>{{ op.opportunities.location }}</td>
+          <td>{{ op.opportunities.vacancy }}</td>
+          <td>{{ op.opportunities.description }}</td>
+          <td>{{ op.opportunities.startDate | date : 'dd/MM/yyyy' }}</td>
+          <td>{{ op.opportunities.endDate | date : 'dd/MM/yyyy' }}</td>
+          <td>
+            <button class="main-btn btn-hover" (click)="onEdit(op.opportunities.opid)">Edit</button>
+          </td>
+          <td>
+            <button class="main-btn  btn-hover" (click)="onDelete(op.opportunities.opid)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

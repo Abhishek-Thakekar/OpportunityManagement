@@ -1,0 +1,58 @@
+<div>
+  <div>
+      Category:
+      <select [ngModel]="selected" (ngModelChange)="onChange($event)">
+        <option value="all">All</option>
+        <option value="title">Title</option>
+        <option value="description">Description</option>
+        <option value="skills">Skills</option>
+        <option value="location">Location</option>
+        <option value="vacancy">Vacancy</option>
+      </select>
+    <input
+      type="text"
+      [(ngModel)]="typed"
+      (keyup)="onKeyUp($event)"
+      name="search"
+      placeholder="Search..."
+    />
+  </div>
+ 
+</div>
+
+<div class="">
+  <div class="table-responsive">
+    <table class="table  table-hover table-dark">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Manager</th>
+          <th>Email</th>
+          <th>Skills</th>
+          <th>Location</th>
+          <th>Vacancy</th>
+          <th>End Date</th>
+          <!-- <th>View</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let op of tmpStatus" [ngClass] = "{'alert-danger' : !op.status}" (click)="onClick(op.opportunities.opid)" >
+          <td>{{ op.opportunities.opid }}</td>
+          <td>{{ op.opportunities.title }}</td>
+          <td>{{ op.opportunities.mname }}</td>
+          <td>{{ op.opportunities.memail }}</td>
+          <td>{{ op.opportunities.skills }}</td>
+          <td>{{ op.opportunities.location }}</td>
+          <td>{{ op.opportunities.vacancy }}</td>
+          <td>{{ op.opportunities.endDate | date : 'dd/MM/yyyy' }}</td>
+          <!-- <td>
+            <button class="main-btn btn-hover" (click)="onClick(op.opportunities.opid)">
+              View
+            </button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

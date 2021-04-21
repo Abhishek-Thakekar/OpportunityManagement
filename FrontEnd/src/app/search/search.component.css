@@ -1,0 +1,31 @@
+.over {
+    background : yellow;
+}
+    
+
+input[type=text] {
+    width: 40%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    padding: 1%;
+    background: black;
+    color: white;
+  }
+  
+
+  
+  /* When the input field gets focus, change its width to 100% */
+  input[type=text]:focus {
+    width: 70%;
+  }
+
+  div {
+      margin: 0.5%;
+  }
+
+  select {
+      margin-right: 2%;
+      padding: 0.5%;
+      background-color: black;
+      color: white;
+  }

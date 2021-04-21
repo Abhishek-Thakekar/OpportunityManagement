@@ -1,0 +1,53 @@
+<section id="contact" class="contact-section pt-100 pb-100 mt-100">
+<div class="col-md-6 offset-md-3">
+  <div class="section-title mb-60">
+    <h1 class="mb-15">Create Opportunity </h1>
+  </div>
+  <form [formGroup]="opportunityForm" (ngSubmit)="onSubmit()" id="contact-form" class="contact-form">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="single-form">
+          <input type="text" formControlName="title" class="form-input" id="name" name="name" placeholder="Job Title">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="single-form">
+          <input type="email" formControlName="skills" class="form-input" id="email" name="email" placeholder="Skills">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="single-form">
+          <input type="number" formControlName="vacancy"   min="1"  oninput="validity.valid||(value='');"
+           class="form-input" id="number" name="number" placeholder="Vacancy">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="single-form">
+          <input type="text" formControlName="location" class="form-input" id="location" name="location" placeholder="Location">
+        </div>
+      </div>
+      <div class="col-md-12">
+        End Date
+        <div class="single-form">
+          <input type="date" formControlName="endDate" class="form-input" id="subject" name="subject" placeholder="End Date">
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="single-form">
+          <textarea name="message" formControlName="description" id="message" class="form-input" id="message" rows="5" placeholder="Description"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success main-btn btn-hover"
+      [disabled]="!opportunityForm.valid"
+    >
+      Create
+    </button>
+
+    <button class="btn btn-hover" (click)="onCancel()">Cancel</button>
+  </form>
+</div>
+</section>

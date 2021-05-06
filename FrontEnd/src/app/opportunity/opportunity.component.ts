@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { Opportunities } from '../opportunities';
 import { OpportunitiesService } from '../opportunities.service';
+import { filter, pairwise } from 'rxjs/operators';
 
 @Component({
   selector: 'app-opportunity',
@@ -10,41 +11,68 @@ import { OpportunitiesService } from '../opportunities.service';
 })
 export class OpportunityComponent implements OnInit {
   opportunities?: Opportunities[];
-  tmpStatus: [{
-    opportunities: Opportunities;
-    status: boolean;
-  }] = [{
-    opportunities:{},
-    status : true
-  }];
+  tmpStatus: [
+    {
+      opportunities: Opportunities;
+      status: boolean;
+    }
+  ] = [
+    {
+      opportunities: {},
+      status: true,
+    },
+  ];
 
   constructor(
     private opportunitiesService: OpportunitiesService,
     private router: Router
-  ) {}
-  
-  onClick(id : any){
-    console.log("test ",id);;
-    this.router.navigate(['/id/',id])
+  ) {
+    // this.router.events
+    //   .pipe(
+    //     filter((evt: any) => evt instanceof RoutesRecognized),
+    //     pairwise()
+    //   )
+    //   .subscribe((events: RoutesRecognized[]) => {
+    //     let previousUrl = events[0].urlAfterRedirects;
+    //     let currentUrl = events[1].urlAfterRedirects;
+
+    //     if((previousUrl == '/create' || previousUrl == '/update/id/{id}') && currentUrl == '/dashboard' ){
+    //       console.log("updating");
+    //       window.location.reload();
+    //     }
+    //     console.log('previous url', events[0].urlAfterRedirects);
+    //     console.log('current url', events[1].urlAfterRedirects);
+    //   });
+    // console.log('constructor dashboard');
+  }
+
+  onClick(id: any) {
+    console.log('test ', id);
+    // this.router.navigate(['/id/',id])
   }
   onEdit(id?: number): void {
-    if(id)
-      this.router.navigate(['update/id/', id]);
+    console.log('test ', id);
+    if (id) this.router.navigate(['update/', id]);
   }
 
   onDelete(id?: number): void {
+    console.log('test ', id);
     if (id) {
-      this.opportunitiesService.deleteOpportunity(id).subscribe((data) => {
-        this.getOpportunities();
-      });
+      var result = confirm('Want to delete?');
+      if (result) {
+        this.opportunitiesService.deleteOpportunity(id).subscribe((data) => {
+          this.getOpportunities();
+        });
+      }
     }
   }
 
   ngOnInit(): void {
+    console.log();
     this.getOpportunities();
   }
 
-  private getOpportunities() {
+  getOpportunities() {
     let email: any = localStorage.getItem('useremail');
     if (email) {
       this.opportunitiesService
@@ -62,7 +90,7 @@ export class OpportunityComponent implements OnInit {
               };
               let current = new Date();
               let endDate = this.opportunities[i].endDate;
-              if (endDate){
+              if (endDate) {
                 endDate = new Date(endDate);
                 if (endDate < current) {
                   temp.status = false;
@@ -73,9 +101,7 @@ export class OpportunityComponent implements OnInit {
             this.tmpStatus.shift();
             // console.log(this.tmpStatus)
           }
-
         });
     }
-    
   }
 }

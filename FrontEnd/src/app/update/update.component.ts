@@ -20,6 +20,7 @@ export class UpdateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log();
     this.id = this.route.snapshot.params['id'];
     this.opportunitiesService.getOpportunityById(this.id).subscribe(
       (data) => {
@@ -33,17 +34,20 @@ export class UpdateComponent implements OnInit {
   }
 
   saveOpportunity() {
-    this.opportunitiesService.createOpportunity(this.opportunity).subscribe(
+    console.log();
+    this.opportunitiesService.updateOpportunity(this.id , this.opportunity).subscribe(
       (data) => {},
       (error) => console.log('error in saving data')
     );
   }
 
   onCancel() {
+    console.log();
     this.router.navigate(['/dashboard']);
   }
 
   onSubmit() {
+    console.log();
     if (
       !(
         this.opportunity.title &&
@@ -60,6 +64,6 @@ export class UpdateComponent implements OnInit {
     this.opportunity.mname = localStorage.getItem('username');
     this.opportunity.memail = localStorage.getItem('useremail');
     this.saveOpportunity();
-    this.router.navigate(['/']);
+    this.router.navigate(['/dashboard']);
   }
 }

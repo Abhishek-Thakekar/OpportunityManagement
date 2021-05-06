@@ -1,0 +1,43 @@
+<h1>Audits</h1> <i>Click on Opportunity to view current version!</i>
+<div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-dark">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Opportunity</th>
+            <th>Version</th>
+            <th>Title</th>
+            <th>Manager</th>
+            <th>Email</th>
+            <th>Skills</th>
+            <th>Location</th>
+            <th>Vacancy</th>
+            <th>Start Date</th>
+            <th>Update Date</th>
+            <th>End Date</th>
+            <th>Description</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let audit of audits"  (click)="onClick(audit.opid)" >
+            <td>{{ audit.id }}</td>
+            <td>{{ audit.opid }}</td>
+            <td>{{ audit.version }}</td>
+            <td>{{ audit.title }}</td>
+            <td>{{ audit.mname }}</td>
+            <td>{{ audit.memail }}</td>
+            <td>{{ audit.skills }}</td>
+            <td>{{ audit.location }}</td>
+            <td>{{ audit.vacancy }}</td>
+            <td>{{ audit.startDate | date : 'dd/MM/yyyy' }}</td>
+            <td>{{ audit.updateDate | date : 'dd/MM/yyyy' }}</td>
+            <td>{{ audit.endDate | date : 'dd/MM/yyyy' }}</td>
+            <td>{{ audit.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

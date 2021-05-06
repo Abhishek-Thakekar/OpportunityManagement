@@ -19,14 +19,15 @@ export class AuthenticationComponent implements OnInit {
   ) {}
 
   signInWithGoogle(): void {
+    console.log();
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.router.navigate(['/']);
+    this.router.navigate(['/search']);
   }
 
   ngOnInit() {
-    console.log('ngoninit authentication.ts 1');
+    console.log();
     if (localStorage.getItem('AUTH_TOKEN')) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/search']);
     }
   }
 }

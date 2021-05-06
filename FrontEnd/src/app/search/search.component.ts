@@ -24,10 +24,12 @@ export class SearchComponent implements OnInit {
   constructor(private opportunitiesService: OpportunitiesService , private router : Router) {}
 
   ngOnInit(): void {
+    console.log();
     this.getOpportunities();
   }
 
-  private getOpportunities() {
+  getOpportunities() {
+    console.log();
     this.opportunitiesService.getOpportunities().subscribe(
       (data) => {
         this.opportunities = data;
@@ -39,67 +41,74 @@ export class SearchComponent implements OnInit {
   }
 
   onClick(id : any){
-    console.log("test ",id);;
+    console.log(id);
     this.router.navigate(['/id/',id])
   }
 
   
 
   update() {
-    let temp = [];
-    let filter: any = this.typed.toUpperCase();
+    console.log();
     this.opportunities = this.tempOpportunities;
-    if (filter == '') {
+    let temp1 : Opportunities
+    if (this.typed == '') {
       this.updateTmpStatus();
       return;
     }
-    if (this.opportunities) {
-      for (let i = 0; i < this.opportunities.length; i++) {
-        let txt;
-        let o = this.opportunities[i];
-        if (this.selected == 'vacancy') txt = o.vacancy?.toString();
-        else if (this.selected == 'title') {
-          txt = o.title;
-        } else if (this.selected == 'mname') {
-          txt = o.mname;
-        } else if (this.selected == 'memail') {
-          txt = o.memail;
-        } else if (this.selected == 'skills') {
-          txt = o.skills;
-        } else if (this.selected == 'description') {
-          txt = o.description;
-        } else if (this.selected == 'location') {
-          txt = o.location;
-        } else if (this.selected == 'all') {
-          txt =
-            o.title +
-            ' ' +
-            o.mname +
-            ' ' +
-            o.memail +
-            ' ' +
-            o.description +
-            ' ' +
-            o.location +
-            ' ' +
-            o.description +
-            ' ' +
-            o.skills;
-          ' ' + o.vacancy?.toString();
-        }
-        if (txt) {
-          txt = txt.toUpperCase();
-          if (txt.indexOf(filter) > -1) {
-            temp.push(this.opportunities[i]);
+    let filter: any = this.typed.trim().toUpperCase().split(" ");
+    for(let k=0 ; k<filter.length ; k++){
+      if(filter[k]=="") continue;
+      let temp = [];
+      if (this.opportunities) {
+        for (let i = 0; i < this.opportunities.length; i++) {
+          let txt;
+          let o = this.opportunities[i];
+          if (this.selected == 'vacancy') txt = o.vacancy?.toString();
+          else if (this.selected == 'title') {
+            txt = o.title;
+          } else if (this.selected == 'mname') {
+            txt = o.mname;
+          } else if (this.selected == 'memail') {
+            txt = o.memail;
+          } else if (this.selected == 'skills') {
+            txt = o.skills;
+          } else if (this.selected == 'description') {
+            txt = o.description;
+          } else if (this.selected == 'location') {
+            txt = o.location;
+          } else if (this.selected == 'all') {
+            txt =
+              o.title +
+              ' ' +
+              o.mname +
+              ' ' +
+              o.memail +
+              ' ' +
+              o.description +
+              ' ' +
+              o.location +
+              ' ' +
+              o.description +
+              ' ' +
+              o.skills +
+            ' ' + o.vacancy?.toString();
+          }
+          if (txt) {
+            txt = txt.toUpperCase();
+            if (txt.indexOf(filter[k]) > -1) {
+              temp.push(this.opportunities[i]);
+            }
           }
         }
-      }
+        this.opportunities = temp;
+      } 
     }
-    this.opportunities = temp;
+    
     this.updateTmpStatus();
   }
 
   updateTmpStatus(){
+    console.log();
     this.tmpStatus=[{
       opportunities:{},
       status : true
@@ -128,14 +137,17 @@ export class SearchComponent implements OnInit {
   }
 
   onKeyUp(e: any) {
+    console.log();
     let filter = e.target.value;
     this.typed = filter;
     this.update();
   }
 
   onChange(e: any) {
+    console.log();
     this.selected = e;
     this.typed = '';
     this.update();
   }
 }
+ 

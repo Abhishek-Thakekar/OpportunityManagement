@@ -1,5 +1,6 @@
 package com.accolite.opportunity.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +10,14 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "oldOpportunity")
-public class OldOpportunity {
+@Table(name = "audit")
+public class Audit {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(name="opid")
 	private long opid;
 	
 	@Column(name = "mname")
@@ -41,12 +45,22 @@ public class OldOpportunity {
 	@Column(name = "endDate")
 	private Date endDate;
 	
-	public OldOpportunity() {
+
+	@Column(name = "startDate")
+	private Date startDate;
+	
+	@Column(name = "updateDate")
+	private Date updateDate;
+	
+	@Column(name = "version")
+	private int version;
+	public Audit() {
 		
 	}
-	public OldOpportunity(String mname, String memail, String title, String description, int vacancy, String location,
-			String skills , Date endDate) {
+	public Audit(long opid , String mname, String memail, String title, String description, int vacancy, String location,
+			String skills , Date endDate , Date startDate , Date updateDate , int version) {
 		super();
+		this.opid = opid;
 		this.mname = mname;
 		this.memail = memail;
 		this.title = title;
@@ -55,6 +69,15 @@ public class OldOpportunity {
 		this.location = location;
 		this.skills = skills;
 		this.endDate = endDate;
+		this.startDate = startDate;
+		this.updateDate = updateDate;
+		this.version = version;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public long getOpid() {
 		return opid;
@@ -110,6 +133,26 @@ public class OldOpportunity {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	public Date getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	
+	
 	
 }
-

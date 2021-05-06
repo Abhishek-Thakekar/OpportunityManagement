@@ -19,6 +19,7 @@ export class NavigationComponent implements OnInit {
   img_url?: string | null;
 
   signOut(): void {
+    console.log("signing out");
     localStorage.removeItem('img_url');
     localStorage.removeItem('AUTH_TOKEN');
     localStorage.removeItem('username');
@@ -27,6 +28,7 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   ngOnInit(): void {
+    console.log();
     this.img_url = localStorage.getItem('img_url');
     // console.log('share service nav com', this.sharedService.user);
   }

@@ -26,7 +26,9 @@ export class CreateComponent implements OnInit {
     private opportunitiesService: OpportunitiesService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log();
+  }
 
   saveOpportunity() {
     console.log('post opportunity ', this.opportunity);
@@ -37,10 +39,12 @@ export class CreateComponent implements OnInit {
   }
 
   onCancel() {
+    console.log("cancelling...");
     this.router.navigate(['/dashboard']);
   }
 
   onSubmit() {
+    console.log("creating new");
     this.opportunity = this.opportunityForm.value;
     if (
       !(

@@ -1,8 +1,10 @@
-<h3  class="text-secondary" style="text-align:center;">Visualize Opportunities</h3>
-<div style="margin : 5%;" class="row ml-5">
+<h3 class="text-secondary" style="text-align: center">
+  Visualize Opportunities
+</h3>
+<div style="margin: 5%" class="row ml-5">
   <div class="col">
     <div class="row">
-      <h4>Domain VS  Vacancy</h4>
+      <h4>Domain VS Vacancy</h4>
     </div>
 
     <div *ngIf="tvData && tvData.length" class="row">
@@ -24,78 +26,76 @@
     </div>
   </div>
 </div>
-<hr>
+<hr />
 
 <div class="container-fluid">
-    <div class="row pt-2">
-      <div class="col-md-12">
-        <div class="card text-left">
-          <div  *ngIf="svData && svData.length" class="card-body">
-            <h4 class="card-title border-bottom">Skills VS Vacancy</h4>
-            <ngx-charts-bar-vertical 
-                [view]="[1000,400]"
-                [results]="svData"
-                [xAxisLabel]="'Skills'"
-                [legendTitle]="'Skills'"
-                [yAxisLabel]="'Vacancy'"
-                [legend]="true"
-                [showXAxisLabel]="true"
-                [showYAxisLabel]="true"
-                [xAxis]="true"
-                [yAxis]="true"
-                [gradient]="true">
-            </ngx-charts-bar-vertical>
-          </div>
+  <div class="row pt-2">
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="svData && svData.length" class="card-body">
+          <h4 class="card-title border-bottom">Skills VS Vacancy</h4>
+          <ngx-charts-bar-vertical
+            [view]="[1000, 400]"
+            [results]="svData"
+            [xAxisLabel]="'Skills'"
+            [legendTitle]="'Skills'"
+            [yAxisLabel]="'Vacancy'"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxis]="true"
+            [yAxis]="true"
+            [gradient]="true"
+          >
+          </ngx-charts-bar-vertical>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="card text-left">
-          <div *ngIf="svData && svData.length" class="card-body">
-            <h4 class="card-title border-bottom"></h4>
-            <ngx-charts-advanced-pie-chart 
-                  [results]="svData"
-                  [gradient]="true" >
-            </ngx-charts-advanced-pie-chart>
-          </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="svData && svData.length" class="card-body">
+          <h4 class="card-title border-bottom"></h4>
+          <ngx-charts-advanced-pie-chart [results]="svData" [gradient]="true">
+          </ngx-charts-advanced-pie-chart>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="card text-left">
-          <div *ngIf="svData && svData.length" class="card-body">
-            <h4 class="card-title border-bottom"></h4>
-            <ngx-charts-pie-grid 
-              [results]="svData" >
-            </ngx-charts-pie-grid>
-          </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="svData && svData.length" class="card-body">
+          <h4 class="card-title border-bottom"></h4>
+          <ngx-charts-pie-grid [results]="svData"> </ngx-charts-pie-grid>
         </div>
       </div>
+    </div>
 
-      <hr>
-      <div class="col-md-12">
-        <div class="card text-left">
-          <div *ngIf="lvData && lvData.length" class="card-body">
-            <h4 class="card-title border-bottom">Location VS Vacancy</h4>
-            <ngx-charts-pie-chart 
-                [results]="lvData"
-                [legend]="true"
-                [legendTitle]="'Location'" 
-                [view]="[1000,300]"
-                [labels]="true" >
-            </ngx-charts-pie-chart>
-          </div>
+    <hr />
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="lvData && lvData.length" class="card-body">
+          <h4 class="card-title border-bottom">Location VS Vacancy</h4>
+          <ngx-charts-pie-chart
+            [results]="lvData"
+            [legend]="true"
+            [legendTitle]="'Location'"
+            [view]="[1000, 300]"
+            [labels]="true"
+          >
+          </ngx-charts-pie-chart>
         </div>
       </div>
     </div>
   </div>
-<hr>
-  <div class="col">
-    <div class="row">
-      <h4>
-          Domain VS Location VS Vacancy
-      </h4>
-    </div>
-    <div  *ngIf="tlvData && tlvData.length" class="col-md-12">
-      <ngx-charts-bar-vertical-2d
+</div>
+<hr />
+
+
+<!-- <div class="col">
+  <div class="row">
+    <h4>Domain VS Location VS Vacancy</h4>
+  </div>
+  <div *ngIf="tlvData && tlvData.length" class="col-md-12">
+    <ngx-charts-bar-vertical-2d
       [view]="view"
       [scheme]="colorScheme"
       [results]="tlvData"
@@ -108,25 +108,134 @@
       [showYAxisLabel]="showYAxisLabel"
       [xAxisLabel]="'Location'"
       [yAxisLabel]="'Vacancy'"
-      >
-      </ngx-charts-bar-vertical-2d>
-    </div>
+    >
+    </ngx-charts-bar-vertical-2d>
   </div>
+</div> -->
 
-<div  *ngIf="tlvData && tlvData.length" class="col-md-12">
+<!-- <div *ngIf="tlvData && tlvData.length" class="col-md-12">
   <ngx-charts-bar-horizontal-stacked
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="tlvData"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [legendTitle]="'Domain'"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="'Vacancy'"
-      [yAxisLabel]="'Location'"
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="tlvData"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [legendTitle]="'Domain'"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="'Vacancy'"
+    [yAxisLabel]="'Location'"
   >
   </ngx-charts-bar-horizontal-stacked>
+</div> -->
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row pt-2">
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="tlvData && tlvData.length" class="card-body">
+          <h4 class="card-title border-bottom">Domain VS Location VS Vacancy</h4>
+          
+          <ngx-charts-bar-vertical-2d
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="tlvData"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [legendTitle]="'Domain'"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="'Location'"
+          [yAxisLabel]="'Vacancy'"
+        >
+        </ngx-charts-bar-vertical-2d>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="tlvData && tlvData.length" class="card-body">
+          <h4 class="card-title border-bottom"></h4>
+          <ngx-charts-bar-horizontal-stacked
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="tlvData"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [legendTitle]="'Domain'"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="'Vacancy'"
+          [yAxisLabel]="'Location'"
+        >
+        </ngx-charts-bar-horizontal-stacked>        </div>
+      </div>
+    </div>
+    
+  </div>
 </div>
+
+<hr/>
+
+
+
+
+<div class="container-fluid">
+  <div class="row pt-2">
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="yearData && yearData.length" class="card-body">
+          <h4 class="card-title border-bottom">Domain VS Year VS Vacancy</h4>
+          
+          <ngx-charts-bar-vertical-2d
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="yearData"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [legendTitle]="'Domain'"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="'Year'"
+          [yAxisLabel]="'Vacancy'"
+        >
+        </ngx-charts-bar-vertical-2d>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card text-left">
+        <div *ngIf="yearData && yearData.length" class="card-body">
+          <h4 class="card-title border-bottom"></h4>
+          <ngx-charts-bar-horizontal-stacked
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="yearData"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [legendTitle]="'Domain'"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="'Vacancy'"
+          [yAxisLabel]="'Year'"
+        >
+        </ngx-charts-bar-horizontal-stacked>        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

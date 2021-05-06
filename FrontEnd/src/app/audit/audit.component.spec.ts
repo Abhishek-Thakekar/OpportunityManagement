@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import { CreateComponent } from './create.component';
+import { AuditComponent } from './audit.component';
 
-describe('CreateComponent', () => {
-  let component: CreateComponent;
-  let fixture: ComponentFixture<CreateComponent>;
+describe('AuditComponent', () => {
+  let component: AuditComponent;
+  let fixture: ComponentFixture<AuditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateComponent ],
+      declarations: [ AuditComponent ],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule
@@ -19,7 +19,7 @@ describe('CreateComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateComponent);
+    fixture = TestBed.createComponent(AuditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -28,28 +28,20 @@ describe('CreateComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should able to call cancel operation', () => {
+  it('should able call onClick function ', () => {
     console.log = jasmine.createSpy("log")
-    component.onCancel();
+    component.onClick(1);
     expect(console.log).toHaveBeenCalled();
   })
 
-  it('should able to save oppoetunnity ', () => {
+  it('should able call getOpportunities function ', () => {
     console.log = jasmine.createSpy("log")
-    component.saveOpportunity();
+    component.getOpportunities();
     expect(console.log).toHaveBeenCalled();
   })
-
-  it('should able to submit ', () => {
-    console.log = jasmine.createSpy("log")
-    component.onSubmit();
-    expect(console.log).toHaveBeenCalled();
-  })
-
   it('should able to init ', () => {
     console.log = jasmine.createSpy("log")
     component.ngOnInit();
     expect(console.log).toHaveBeenCalled();
   })
-
 });
